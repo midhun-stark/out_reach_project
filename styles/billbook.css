@@ -1,0 +1,270 @@
+/* billbook.css — Paper billbook style for preview and PDF */
+
+.billbook {
+    background: #fffef8;
+    color: #1a1a1a;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 32px 28px 28px;
+    border: 1px solid #c8b87a;
+    box-shadow: 0 0 0 4px #f0e6b5, 0 8px 32px rgba(0, 0, 0, 0.2);
+    position: relative;
+    line-height: 1.5;
+}
+
+/* Decorative top line */
+.billbook::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: repeating-linear-gradient(90deg, #8B6914 0px, #8B6914 20px, #c8a23a 20px, #c8a23a 40px);
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+/* ===== Header ===== */
+.bb-header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.bb-contractor-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #3d2b00;
+    font-family: 'Georgia', serif;
+    margin-bottom: 4px;
+}
+
+.bb-contractor-sub {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #7a5c00;
+    margin-bottom: 6px;
+}
+
+.bb-contractor-contact {
+    font-size: 0.82rem;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+.bb-divider {
+    border: none;
+    border-top: 1.5px solid #8B6914;
+    margin: 12px 0 8px;
+}
+
+/* ===== Meta row (To / Bill no, Date) ===== */
+.bb-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.bb-meta-left {
+    flex: 1;
+    min-width: 140px;
+}
+
+.bb-meta-right {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.bb-label {
+    font-size: 0.78rem;
+    color: #7a5c00;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bb-client-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 4px;
+    color: #1a1a1a;
+}
+
+.bb-client-addr {
+    font-size: 0.82rem;
+    color: #444;
+    margin-top: 2px;
+}
+
+.bb-meta-row {
+    font-size: 0.85rem;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.bb-meta-row strong {
+    color: #1a1a1a;
+}
+
+/* ===== Table ===== */
+.bb-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+
+.bb-table th {
+    background: #3d2b00;
+    color: #f0e6b5;
+    padding: 9px 12px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+}
+
+.bb-th-num {
+    width: 40px;
+    text-align: center;
+}
+
+.bb-th-desc {
+    text-align: left;
+}
+
+.bb-th-amt {
+    width: 110px;
+    text-align: right;
+}
+
+.bb-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #e8d9a0;
+    color: #222;
+    vertical-align: top;
+}
+
+.bb-td-num {
+    text-align: center;
+    color: #7a5c00;
+    font-weight: 600;
+}
+
+.bb-td-desc {
+    text-align: left;
+}
+
+.bb-td-amt {
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.bb-table tbody tr:nth-child(even) {
+    background: #fdf7e3;
+}
+
+.bb-table tbody tr:hover {
+    background: #fef5cc;
+}
+
+/* ===== Totals ===== */
+.bb-total-section {
+    background: #fdf7e3;
+    border: 1.5px solid #c8b87a;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-top: 14px;
+}
+
+.bb-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+.bb-total-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #3d2b00;
+    text-transform: uppercase;
+}
+
+.bb-total-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #3d2b00;
+}
+
+.bb-words-row {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.bb-words {
+    font-style: italic;
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* ===== Footer / Signature ===== */
+.bb-footer-note {
+    font-size: 0.78rem;
+    color: #555;
+    border-top: 1px dashed #c8b87a;
+    border-bottom: 1px dashed #c8b87a;
+    padding: 8px 4px;
+    margin-top: 12px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.bb-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 28px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.bb-stamp-area {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+}
+
+.bb-sig-line {
+    border-top: 1px solid #aaa;
+    margin-top: 40px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bb-thank {
+    font-size: 0.78rem;
+    color: #7a5c00;
+    font-style: italic;
+    text-align: right;
+    align-self: flex-end;
+}
+
+/* ===== Decorative bottom line ===== */
+.billbook::after {
+    content: '';
+    display: block;
+    height: 5px;
+    background: repeating-linear-gradient(90deg, #8B6914 0px, #8B6914 20px, #c8a23a 20px, #c8a23a 40px);
+    margin-top: 20px;
+    border-radius: 2px;
+}
