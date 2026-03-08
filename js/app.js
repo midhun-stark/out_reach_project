@@ -37,23 +37,32 @@ function navigateTo(page) {
 
     // Initialize page-specific content
     switch (page) {
-        case 'home':
-            renderHomePage();
-            break;
-        case 'clients':
-            renderClientsPage();
-            break;
-        case 'billing':
-            resetBillingForm();
-            break;
-        case 'history':
-            renderHistoryPage();
-            initHistorySearch();
-            break;
-        case 'settings':
-            renderSettingsPage();
-            break;
-    }
+
+    case 'home':
+        renderHomePage();
+        break;
+
+    case 'clients':
+        renderClientsPage();
+        break;
+
+    case 'billing':
+        resetBillingForm();
+        break;
+
+    case 'history':
+        renderHistoryPage();
+        initHistorySearch();
+        break;
+
+    case 'reports':
+        renderReportsPage();
+        break;
+
+    case 'settings':
+        renderSettingsPage();
+        break;
+}
 }
 
 async function renderHomePage() {
@@ -90,6 +99,51 @@ async function renderHomePage() {
       </div>
     `;
     }).join('');
+}
+
+async function renderReportsPage() {
+
+    const bills = await BillDB.getAll();
+
+    const today = new Date().toISOString().split('T')[0];
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
+    let todayBills = 0;
+    let todayIncome = 0;
+
+    let monthBills = 0;
+    let monthIncome = 0;
+
+    bills.forEach(bill => {
+
+        const billDate = new Date(bill.date);
+
+        if (bill.date === today) {
+            todayBills++;
+            todayIncome += parseFloat(bill.total || 0);
+        }
+
+        if (
+            billDate.getMonth() === currentMonth &&
+            billDate.getFullYear() === currentYear
+        ) {
+            monthBills++;
+            monthIncome += parseFloat(bill.total || 0);
+        }
+
+    });
+
+    document.getElementById('report-today-bills').textContent = todayBills;
+
+    document.getElementById('report-today-income').textContent =
+        todayIncome.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
+    document.getElementById('report-month-bills').textContent = monthBills;
+
+    document.getElementById('report-month-income').textContent =
+        monthIncome.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
 }
 
 // --- Settings page ---
@@ -160,6 +214,8 @@ async function saveBillLayout() {
     await SettingsDB.setBillLayout(layout);
     showToast('Bill layout saved!');
 }
+
+
 
 // Boot
 document.addEventListener('DOMContentLoaded', initApp);
