@@ -113,3 +113,37 @@ function editBillFromHistory(id) {
   document.getElementById('preview-modal').classList.remove('modal--open');
   loadBillForEditing(id);
 }
+function calculateReports(bills) {
+
+    let today = new Date().toISOString().split("T")[0];
+
+    let todayBills = 0;
+    let todayAmount = 0;
+
+    let monthBills = 0;
+    let monthAmount = 0;
+
+    let currentMonth = new Date().getMonth();
+
+    bills.forEach(bill => {
+
+        let billDate = new Date(bill.date);
+
+        if (bill.date === today) {
+            todayBills++;
+            todayAmount += bill.total;
+        }
+
+        if (billDate.getMonth() === currentMonth) {
+            monthBills++;
+            monthAmount += bill.total;
+        }
+
+    });
+
+    document.getElementById("todayBills").textContent = todayBills;
+    document.getElementById("todayAmount").textContent = todayAmount;
+
+    document.getElementById("monthBills").textContent = monthBills;
+    document.getElementById("monthAmount").textContent = monthAmount;
+}

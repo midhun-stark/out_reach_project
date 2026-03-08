@@ -21,7 +21,6 @@
   <header class="app-header">
     <div>
       <div class="app-header__title">🔧 BillBook</div>
-      <div class="app-header__subtitle">Vehicle Repair Contractor</div>
     </div>
     <button class="btn btn--secondary btn--sm" onclick="navigateTo('billing')" id="new-bill-header-btn">+ New
       Bill</button>
@@ -423,6 +422,19 @@
       if (currentPage === 'home') renderHomePage();
     }
   </script>
+  <section id="expenses-page" class="page">
+  <h2>Expenses / Reports</h2>
+
+  <div class="report-box">
+    <p>Today's Bills: <span id="todayBills"></span></p>
+    <p>Today's Income: ₹<span id="todayAmount"></span></p>
+  </div>
+
+  <div class="report-box">
+    <p>This Month Bills: <span id="monthBills"></span></p>
+    <p>This Month Income: ₹<span id="monthAmount"></span></p>
+  </div>
+</section>
 
 </body>
 
